@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Quran Pocket</string>
+    <string-array name="txt_tab_items">
+        <item>Surah</item>
+        <item>Juz</item>
+        <item>Page</item>
+    </string-array>
+</resources>
