@@ -9,6 +9,7 @@ import com.fikrielg.quranpocket.data.source.local.entities.Juz
 import com.fikrielg.quranpocket.data.source.local.entities.Page
 import com.fikrielg.quranpocket.data.source.local.entities.Quran
 import com.fikrielg.quranpocket.data.source.local.entities.Surah
+import com.fikrielg.quranpocket.data.source.remote.model.PrayerTimeResponse
 import kotlinx.coroutines.flow.Flow
 
 interface QuranRepository {
@@ -32,4 +33,9 @@ interface QuranRepository {
     suspend fun deleteBookmark(bookmark: Bookmark)
 
     suspend fun deleteAllBookmark()
+
+    fun searchSurah(search:String): Flow<List<Surah>>
+
+    fun searchEntireSurah(search:String): Flow<List<Quran>>
+    suspend fun getPrayerTime(latitude: String, longitude: String): PrayerTimeResponse
 }

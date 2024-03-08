@@ -7,9 +7,12 @@ import com.fikrielg.quranpocket.data.repository.QuranRepository
 import com.fikrielg.quranpocket.data.source.local.entities.Bookmark
 import com.fikrielg.quranpocket.data.source.local.entities.Juz
 import com.fikrielg.quranpocket.data.source.local.entities.Page
+import com.fikrielg.quranpocket.data.source.local.entities.Quran
 import com.fikrielg.quranpocket.data.source.local.entities.Surah
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import javax.inject.Inject

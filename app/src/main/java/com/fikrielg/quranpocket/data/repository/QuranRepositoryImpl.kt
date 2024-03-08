@@ -7,11 +7,14 @@ import com.fikrielg.quranpocket.data.source.local.entities.Juz
 import com.fikrielg.quranpocket.data.source.local.entities.Page
 import com.fikrielg.quranpocket.data.source.local.entities.Quran
 import com.fikrielg.quranpocket.data.source.local.entities.Surah
+import com.fikrielg.quranpocket.data.source.remote.model.PrayerTimeResponse
+import com.fikrielg.quranpocket.data.source.remote.service.ApiInterface
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 class QuranRepositoryImpl @Inject constructor(
     private val quranDatabase: QuranDatabase,
+    private val api: ApiInterface,
     private val bookmarkDatabase: BookmarkDatabase
 ) : QuranRepository {
     override fun showQuranBySurah(): Flow<List<Surah>> {
@@ -52,6 +55,21 @@ class QuranRepositoryImpl @Inject constructor(
 
     override suspend fun deleteAllBookmark() {
         return bookmarkDatabase.bookmarkDao().deleteAllBookmark()
+    }
+
+    override fun searchSurah(search: String): Flow<List<Surah>> {
+        return quranDatabase.quranDao().searchSurah(search)
+    }
+
+    override fun searchEntireSurah(search: String): Flow<List<Quran>> {
+        return quranDatabase.quranDao().searchEntireSurah(search)
+    }
+
+    override suspend fun getPrayerTime(
+        latitude: String,
+        longitude: String
+    ): PrayerTimeResponse {
+        return api.getAdzanSchedule(latitude, longitude)
     }
 
 }

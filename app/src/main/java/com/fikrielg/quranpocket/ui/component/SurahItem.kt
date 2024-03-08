@@ -11,10 +11,12 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
@@ -28,12 +30,15 @@ import com.fikrielg.quranpocket.ui.theme.uthmanic
 @Composable
 fun SurahItem(
     surah:Surah,
-    onClick: (Int) -> Unit
+    onClick: () -> Unit
 ) {
     Row(
         modifier = Modifier
+            .clip(shape = RoundedCornerShape(12.dp))
             .fillMaxWidth()
-            .clickable { onClick(surah.surahNumber ?: 0) }
+            .clickable { onClick(
+//                surah.surahNumber ?: 0
+            ) }
             .padding(12.dp),
         verticalAlignment = Alignment.CenterVertically,
     horizontalArrangement = Arrangement.SpaceBetween
@@ -60,7 +65,7 @@ fun SurahItem(
             Column {
                 Text(text = surah.surahNameEn ?: "", fontFamily = montserrat, fontWeight = FontWeight.SemiBold)
                 Text(
-                    text = "${surah.surahNameId ?: ""} · ${surah.ayahTotal} Ayat",
+                    text = "${surah.surahNameId ?: ""} · ${surah.ayahTotal ?: 0} Ayat",
                     fontFamily = montserrat,
                     fontSize = 11.sp,
                     color = Color.Gray

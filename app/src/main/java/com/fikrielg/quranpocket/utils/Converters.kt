@@ -12,6 +12,12 @@ object Converters {
         return SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(Date(dateAdded))
     }
 
+    fun convertNumberToThreeDigits(
+        number: Int
+    ): String {
+        return String.format("%03d", number)
+    }
+
     fun List<Juz>.mapToJuzIndexing(): List<JuzWithSurahIndex> {
         val groupedList = this.groupBy { it.juzNumber }
         return groupedList.map { (juzNumber, juzList) ->

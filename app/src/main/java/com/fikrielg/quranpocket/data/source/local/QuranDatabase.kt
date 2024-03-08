@@ -10,7 +10,7 @@ import com.fikrielg.quranpocket.data.source.local.entities.Surah
 
 @Database(
     entities = [Quran::class],
-    version = 2,
+    version = 1,
     views = [Surah::class, Juz::class, Page::class]
 )
 abstract class QuranDatabase : RoomDatabase() {

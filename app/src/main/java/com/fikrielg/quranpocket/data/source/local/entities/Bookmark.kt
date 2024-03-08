@@ -15,5 +15,4 @@ data class Bookmark(
     val translationId: String? = "",
     val position: Int? = 0,
     val dateAdded: Long? = System.currentTimeMillis(),
-    val indexType: Int? = ORDER_BY_SURAH
 )
